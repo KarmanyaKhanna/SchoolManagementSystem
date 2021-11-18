@@ -74,7 +74,7 @@ public class Admin {
                 student.setName(line3);
                 break;
             case "attendance":
-                student.setDaysAttended(Integer.parseInt(line3));
+                student.addDaysAttended(Integer.parseInt(line3));
                 break;
             case "id":
                 student.setId(Integer.parseInt(line3));
@@ -102,6 +102,7 @@ public class Admin {
         }
 
     }
+
 
 
 

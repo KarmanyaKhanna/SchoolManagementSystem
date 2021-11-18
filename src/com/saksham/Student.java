@@ -26,7 +26,7 @@ public class Student {
         this.id = id;
     }
 
-    public void setDaysAttended(int daysAttended) {
+    public void addDaysAttended(int daysAttended) {
         this.daysAttended += daysAttended;
     }
 
