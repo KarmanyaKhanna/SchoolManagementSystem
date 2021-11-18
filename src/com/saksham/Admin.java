@@ -19,6 +19,7 @@ public class Admin {
     }
 
     public void addStudent() {
+        System.out.println("Enter stud");
         String line1 = this.sc.nextLine();
         String line2 = this.sc.nextLine();
         String line3 = this.sc.nextLine();
@@ -26,9 +27,10 @@ public class Admin {
         String[] courseCodeArr = line3.split(Pattern.quote(","));
 
         List<Course> studentCourses = null;
+
         for (int i=0; i<courseCodeArr.length ;i++){
-            int index = Integer.parseInt(courseCodeArr[i]);
-            studentCourses.add(this.courses.get(index));
+            Course course = this.getCourse(Integer.parseInt(courseCodeArr[i]));
+            studentCourses.add(course);
         }
 
         Student student = new Student(studentCourses, line1, Integer.parseInt(line2) );
@@ -39,6 +41,7 @@ public class Admin {
         }
 
         this.students.add(student);
+
 
     }
 
