@@ -6,7 +6,7 @@ import java.util.Locale;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-public class Admin {
+public class Admin implements User{
 
     private final ArrayList<Teacher> teachers = new ArrayList<>();
     private final ArrayList<Student> students = new ArrayList<>();
@@ -14,7 +14,7 @@ public class Admin {
 
     public Scanner sc = new Scanner(System.in);
 
-    Admin(ArrayList<Course> courses){
+    Admin(ArrayList<Course> courses, ArrayList<Student> students,ArrayList<Teacher> teachers){
         this.courses = courses;
         printCourses(courses);
     }
@@ -86,8 +86,6 @@ public class Admin {
         }
         System.out.println("Enter the command you want to perform");
         String line2 = this.sc.nextLine();
-
-
         Student student = this.getStudent(Integer.parseInt(id));
         line2 = line2.toLowerCase(Locale.ROOT);
 
@@ -241,10 +239,10 @@ public class Admin {
         int ID = this.sc.nextInt();
         Student student = this.getStudent(ID);
         assert student != null;
-        System.out.println("Student " + student.name + "attended " + student.daysAttended + " out of 270 days");
+        System.out.println("Student " + student.name + " attended " + student.daysAttended + " out of 270 days");
     }
 
-    private Teacher getTeacher(int ID) {
+    public Teacher getTeacher(int ID) {
         for (Teacher tc : this.teachers) {
             if (tc.getID() == ID) {
                 return tc;
@@ -254,7 +252,7 @@ public class Admin {
     }
 
     private void printTeacher(Teacher teacher){
-        System.out.print("Teacher's Name is " + teacher.name + " with ID:" + teacher.getId() + " and courses are :-");
+        System.out.print("Teacher's Name is " + teacher.name + " with ID:" + teacher.getID() + " and courses are :-");
         printCourses(teacher.courses);
     }
 
@@ -265,17 +263,17 @@ public class Admin {
     }
 
     private void printStudent(Student student){
-        System.out.print("Student's Name is " + student.name + " with ID:" + student.getId() + "Attended " + student.daysAttended + " days out of 270 and his/her courses are :-");
+        System.out.print("Student's Name is " + student.name + " with ID: " + student.getId() + " Attended " + student.daysAttended + " days out of 270 and his/her courses are :- ");
         printCourses(student.courses);
     }
 
     private void printCourses(List<Course> courses){
         for (Course course : courses) {
-            System.out.println("Course Name:" + course.name + ", Course ID:" + course.courseID);
+            System.out.println("Course Name: " + course.name + ", ID: " + course.courseID + ", Marks: " + course.marks + ", and Grade: " + course.grade);
         }
     }
 
-    private Student getStudent(int ID) {
+    public Student getStudent(int ID) {
         for (Student student : this.students) {
             if (student.getId() == ID) {
                 return student;

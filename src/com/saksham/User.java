@@ -1,6 +1,7 @@
 package com.saksham;
 
-public interface   User {
-    String name = null;
-    int getMarks();
+import java.util.Scanner;
+
+public interface User {
+    Scanner in = new Scanner(System.in);
 }
