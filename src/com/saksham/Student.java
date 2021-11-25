@@ -8,10 +8,11 @@ public class Student {
     private int id;
     int daysAttended;
 
-    Student(List<Course> courses, String name, int id) {
+    Student(List<Course> courses, String name, int id, int daysAttended) {
         this.courses = courses;
         this.name = name;
         this.id = id;
+        this.daysAttended= daysAttended;
     }
 
     public int getId() {
