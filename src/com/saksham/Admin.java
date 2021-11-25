@@ -24,19 +24,32 @@ public class Admin {
         String line1 = this.sc.nextLine();
         System.out.println("Enter student id");
         String line2 = this.sc.nextLine();
-        System.out.println("Enter course code seperated by commas");
-        String line3 = this.sc.nextLine();
+        System.out.println("Enter Attendance");
+        int daysAttended = Integer.parseInt(this.sc.nextLine());
 
-        String[] courseCodeArr = line3.split(Pattern.quote(","));
+        List<Course> studentCourses = new ArrayList<>();
 
-        ArrayList<Course> studentCourses = new ArrayList<Course>();
+        courseCodeCheck: do {
 
-        for (String s : courseCodeArr) {
-            Course course = this.getCourse(Integer.parseInt(s));
-            studentCourses.add(course);
-        }
+            System.out.println("Enter Course's codes seperated by  ' , ' ");
+            String line3 = this.sc.nextLine();
+            String[] courseCodeArr = line3.split(Pattern.quote(","));
 
-        Student student = new Student(studentCourses, line1, Integer.parseInt(line2) );
+
+            for (String s : courseCodeArr) {
+
+                Course course = this.getCourse(Integer.parseInt(s));
+                if (course == null) {
+                    System.out.println("Incorrect Course code/codes");
+                    continue courseCodeCheck;
+                }
+                studentCourses.add(course);
+            }
+            break;
+        }while(true);
+
+
+        Student student = new Student(studentCourses, line1, Integer.parseInt(line2), daysAttended );
 
         if(this.students.contains(student)){
             System.out.println("Student already in the school");
@@ -118,17 +131,30 @@ public class Admin {
         String name = this.sc.nextLine();
         System.out.println("Enter Teacher's ID");
         String id = this.sc.nextLine();
-        System.out.println("Enter Course's codes seperated by  ' , ' ");
-        String line3 = this.sc.nextLine();
 
-        String[] courseCodeArr = line3.split(Pattern.quote(","));
 
-        List<Course> teacherCourses = null;
+        List<Course> teacherCourses = new ArrayList<>();
 
-        for (String s : courseCodeArr) {
-            Course course = this.getCourse(Integer.parseInt(s));
-            teacherCourses.add(course);
-        }
+        courseCodeCheck: do {
+
+            System.out.println("Enter Course's codes seperated by  ' , ' ");
+            String line3 = this.sc.nextLine();
+
+            String[] courseCodeArr = line3.split(Pattern.quote(","));
+
+
+            for (String s : courseCodeArr) {
+
+                Course course = this.getCourse(Integer.parseInt(s));
+                if (course == null) {
+                    System.out.println("Incorrect Course code/codes");
+                    continue courseCodeCheck;
+                }
+                teacherCourses.add(course);
+            }
+            break;
+        }while(true);
+
 
         Teacher teacher = new Teacher(Integer.parseInt(id), name, teacherCourses);
 
@@ -138,7 +164,7 @@ public class Admin {
         }
 
         this.teachers.add(teacher);
-
+        printTeacher(teacher);
 
     }
 
@@ -194,9 +220,10 @@ public class Admin {
     }
 
     public void calculateAttendance(){
+        System.out.println("Enter ID of Student you want to get attendance of ");
         int ID = this.sc.nextInt();
         Student student = this.getStudent(ID);
-        System.out.println("Student " + student.name + " attended " + student.daysAttended + "out of 270 days");
+        System.out.println("Student " + student.name + "attended " + student.daysAttended + " out of 270 days");
     }
 
     private Teacher getTeacher(int ID) {
@@ -209,6 +236,11 @@ public class Admin {
         return null;
     }
 
+    private void printTeacher(Teacher teacher){
+        System.out.print("Teacher's Name is " + teacher.name + " with ID:" + teacher.getId() + " and courses are :-");
+        printCourses(teacher.courses);
+    }
+
     public void printAllStudents(){
         for (Student s: students) {
             printStudent(s);
@@ -216,7 +248,7 @@ public class Admin {
     }
 
     private void printStudent(Student student){
-        System.out.print("Student's Name is " + student.name + " with ID:" + student.getId() + " and courses are :-");
+        System.out.print("Student's Name is " + student.name + " with ID:" + student.getId() + "Attended " + student.daysAttended + " days out of 270 and his/her courses are :-");
         printCourses(student.courses);
     }
 

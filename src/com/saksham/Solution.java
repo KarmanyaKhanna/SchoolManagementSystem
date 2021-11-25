@@ -12,6 +12,16 @@ public class Solution {
             initial.add( new Course("ENG", 249));
             initial.add( new Course("LICS", 890));
             Admin fc = new Admin(initial);
+            System.out.println("Command 0 will add student");
+            System.out.println("Command 1 will delete student");
+            System.out.println("Command 2 will update student details");
+            System.out.println("Command 3 will print all students and their details");
+            System.out.println("Command 11 will add teacher");
+            System.out.println("Command 100 will delete teacher");
+            System.out.println("Command 101 will update teacher details");
+            System.out.println("Command 110 will calculate attendance");
+
+            System.out.println("Enter no. of commands you want to implement");
 
             int noOfCommands = Integer.parseInt(fc.sc.nextLine());
             for(int i = 0; i < noOfCommands; i++) {
