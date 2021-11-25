@@ -2,6 +2,7 @@ package com.saksham;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Solution {
@@ -10,11 +11,12 @@ public class Solution {
 
             Scanner in = new Scanner(System.in);
 
-//            CurrentUser cu = new CurrentUser();
-            String str = in.nextLine();
+//           CurrentUser cu = new CurrentUser();
+
+            String str = in.nextLine().toLowerCase(Locale.ROOT);
             User fc = CurrentUser.getInstance(str);
 
-            fc.printAllStudents();
+//            fc.printAllStudents();
 
             System.out.println("Command 0 will add student");
             System.out.println("Command 1 will delete student");
@@ -68,7 +70,7 @@ public class Solution {
                 if (command == 201){
                     fc.printAttendance();
                 }
-                if (command == 201){
+                if (command == 202){
                     fc.printMarks();
                 }
                 ////////////////// Teacher Accessible ///////////////
