@@ -7,7 +7,7 @@ public class Teacher extends User{
     String name;
     List<Course> courses;
 
-    public void getID() {
+    public int getID() {
         return ID;
     }
 

@@ -24,6 +24,9 @@ public class Solution {
             System.out.println("Command 100 will delete teacher");
             System.out.println("Command 101 will update teacher details");
             System.out.println("Command 110 will calculate attendance");
+            System.out.println("Command 200 will print your ID");
+            System.out.println("Command 201 will print your attendance");
+            System.out.println("Command 202 will print your marks");
 
             System.out.println("Enter no. of commands you want to implement");
 
@@ -68,7 +71,7 @@ public class Solution {
                 if (command == 201){
                     fc.printAttendance();
                 }
-                if (command == 201){
+                if (command == 202){
                     fc.printMarks();
                 }
                 ////////////////// Teacher Accessible ///////////////
