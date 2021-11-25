@@ -48,6 +48,7 @@ public class Admin {
     }
 
     public void deleteStudent() {
+        System.out.println("Enter ID of student you want to delete");
         String line1 = this.sc.nextLine();
         int ID = Integer.parseInt(line1);
 
@@ -65,7 +66,9 @@ public class Admin {
     }
 
     public void modifyStudent() {
+        System.out.println("Enter id of student you want to edit");
         String id = this.sc.nextLine();
+        System.out.println("Enter the command you want to perform");
         String line2 = this.sc.nextLine();
         String line3 = this.sc.nextLine();
 
@@ -98,7 +101,9 @@ public class Admin {
                 break;
             case "addmarks":
                 // SOUT LIST OF COURSES WITH CODES HERE and ask user for course id of course jiske marks dene hai student ko
+                System.out.println("Enter the ID of course whose marks you want to set");
                 String courseMarksID = this.sc.nextLine();
+                System.out.println("Enter the number of marks");
                 int marks = this.sc.nextInt();
                 Course courseToBeMarked = this.getCourse(Integer.parseInt(courseMarksID));
                 String output = student.setMarks( courseToBeMarked, marks);
@@ -211,13 +216,13 @@ public class Admin {
     }
 
     private void printStudent(Student student){
-        System.out.println("Student's Name is " + student.name + " with ID:" + student.getId() + "and courses are :-");
+        System.out.print("Student's Name is " + student.name + " with ID:" + student.getId() + " and courses are :-");
         printCourses(student.courses);
     }
 
     private void printCourses(List<Course> courses){
-        for (int i = 0; i < courses.size(); i++) {
-            System.out.println("Course Name:" + courses.get(i).name + ", Course ID:"+ courses.get(i).courseID);
+        for (Course course : courses) {
+            System.out.println("Course Name:" + course.name + ", Course ID:" + course.courseID);
         }
     }
 
@@ -232,16 +237,12 @@ public class Admin {
     }
 
     private Course getCourse(int ID) {
-
-        for (int i = 0; i < courses.size(); i++) {
-            Course c = courses.get(i);
-            if (c.courseID == ID){
-
+        for (Course c : courses) {
+            if (c.courseID == ID) {
                 return c;
             }
         }
         return null;
     }
-
 
 }

@@ -32,13 +32,13 @@ public class Student {
 
     public String setMarks(Course course, int marks) {
         int courseID = course.courseID;
-        for(int i = 0; i < this.courses.size(); i++) {
-            Course c = this.courses.get(i);
-            if (c.getCourseID() == courseID ) {
+        for (Course c : this.courses) {
+            if (c.getCourseID() == courseID) {
                 course.marks = marks;
                 return course.name + " marked " + course.marks + " marks.";
             }
         }
+        course.calculateGrade();
         return "No course found with this ID";
     }
 
