@@ -19,6 +19,20 @@ public class Student {
         return this.id;
     }
 
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getDaysAttended() {
+        return daysAttended;
+    }
+
+    // ADMIN ONLY
+
     public void setName(String name) {
         this.name = name;
     }
@@ -28,7 +42,7 @@ public class Student {
     }
 
     public void addDaysAttended(int daysAttended) {
-        this.daysAttended += daysAttended;
+        this.daysAttended = daysAttended;
     }
 
     public String setMarks(Course course, int marks) {

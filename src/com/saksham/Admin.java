@@ -8,8 +8,8 @@ import java.util.regex.Pattern;
 
 public class Admin {
 
-    private ArrayList<Teacher> teachers = new ArrayList<Teacher>();
-    private ArrayList<Student> students = new ArrayList<Student>();
+    private final ArrayList<Teacher> teachers = new ArrayList<>();
+    private final ArrayList<Student> students = new ArrayList<>();
     private final ArrayList<Course> courses;
 
     public Scanner sc = new Scanner(System.in);
@@ -81,47 +81,60 @@ public class Admin {
     public void modifyStudent() {
         System.out.println("Enter id of student you want to edit");
         String id = this.sc.nextLine();
+        if (id == null){
+            id = this.sc.nextLine();
+        }
         System.out.println("Enter the command you want to perform");
         String line2 = this.sc.nextLine();
-        String line3 = this.sc.nextLine();
+
 
         Student student = this.getStudent(Integer.parseInt(id));
         line2 = line2.toLowerCase(Locale.ROOT);
 
 //        SOUT ENTER NAME TO CHANGE NAME, ENTER ADDCOURSE TO ADD COURSE TO STUDENT etc
 
-        switch (line2){
-            case "name":
-                student.setName(line3);
-                break;
-            case "attendance":
-                student.addDaysAttended(Integer.parseInt(line3));
-                break;
-            case "id":
-                student.setId(Integer.parseInt(line3));
-                break;
-            case "addcourse":
+        switch (line2) {
+            case "name" -> {
+                String name = this.sc.nextLine();
+                assert student != null;
+                student.setName(name);
+            }
+            case "attendance" -> {
+                String attendance = this.sc.nextLine();
+                assert student != null;
+                student.addDaysAttended(Integer.parseInt(attendance));
+            }
+            case "id" -> {
+                String studentID = this.sc.nextLine();
+                assert student != null;
+                student.setId(Integer.parseInt(studentID));
+            }
+            case "addcourse" -> {
 //                SOUT LIST OF COURSES WITH CODES HERE and ask user for course id of course to be added
                 String courseID = this.sc.nextLine();
                 Course courseToBeAdded = this.getCourse(Integer.parseInt(courseID));
+                assert student != null;
                 student.addCourse(courseToBeAdded);
-                break;
-            case "deletecourse":
+            }
+            case "deletecourse" -> {
                 // SOUT LIST OF COURSES WITH CODES HERE and ask user for course id of course to be added
                 String courseDeleteID = this.sc.nextLine();
                 Course courseToBeDeleted = this.getCourse(Integer.parseInt(courseDeleteID));
+                assert student != null;
                 student.deleteCourse(courseToBeDeleted);
-                break;
-            case "addmarks":
+            }
+            case "addmarks" -> {
                 // SOUT LIST OF COURSES WITH CODES HERE and ask user for course id of course jiske marks dene hai student ko
                 System.out.println("Enter the ID of course whose marks you want to set");
                 String courseMarksID = this.sc.nextLine();
                 System.out.println("Enter the number of marks");
                 int marks = this.sc.nextInt();
                 Course courseToBeMarked = this.getCourse(Integer.parseInt(courseMarksID));
-                String output = student.setMarks( courseToBeMarked, marks);
+                assert student != null;
+                assert courseToBeMarked != null;
+                String output = student.setMarks(courseToBeMarked, marks);
                 System.out.println(output);
-                break;
+            }
         }
 
     }
@@ -196,25 +209,29 @@ public class Admin {
         line2 = line2.toLowerCase(Locale.ROOT);
 
 //        SOUT ENTER NAME TO CHANGE NAME, ENTER ADDCOURSE TO ADD COURSE TO STUDENT etc
-        switch (line2){
-            case "name":
+        switch (line2) {
+            case "name" -> {
+                assert teacher != null;
                 teacher.setName(line3);
-                break;
-            case "id":
+            }
+            case "id" -> {
+                assert teacher != null;
                 teacher.setID(Integer.parseInt(line3));
-                break;
-            case "addcourse":
+            }
+            case "addcourse" -> {
 //                SOUT LIST OF COURSES WITH CODES HERE and ask user for course id of course to be added
                 String courseID = this.sc.nextLine();
                 Course courseToBeAdded = this.getCourse(Integer.parseInt(courseID));
+                assert teacher != null;
                 teacher.addCourse(courseToBeAdded);
-                break;
-            case "deletecourse":
+            }
+            case "deletecourse" -> {
                 // SOUT LIST OF COURSES WITH CODES HERE and ask user for course id of course to be added
                 String courseDeleteID = this.sc.nextLine();
                 Course courseToBeDeleted = this.getCourse(Integer.parseInt(courseDeleteID));
+                assert teacher != null;
                 teacher.deleteCourse(courseToBeDeleted);
-                break;
+            }
         }
 
     }
@@ -223,12 +240,12 @@ public class Admin {
         System.out.println("Enter ID of Student you want to get attendance of ");
         int ID = this.sc.nextInt();
         Student student = this.getStudent(ID);
+        assert student != null;
         System.out.println("Student " + student.name + "attended " + student.daysAttended + " out of 270 days");
     }
 
     private Teacher getTeacher(int ID) {
-        for(int i = 0; i < this.teachers.size(); i++) {
-            Teacher tc = this.teachers.get(i);
+        for (Teacher tc : this.teachers) {
             if (tc.getID() == ID) {
                 return tc;
             }
@@ -259,9 +276,8 @@ public class Admin {
     }
 
     private Student getStudent(int ID) {
-        for(int i = 0; i < this.students.size(); i++) {
-            Student student = this.students.get(i);
-            if (student.getId() == ID ) {
+        for (Student student : this.students) {
+            if (student.getId() == ID) {
                 return student;
             }
         }
