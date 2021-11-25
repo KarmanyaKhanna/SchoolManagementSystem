@@ -1,6 +1,6 @@
 package com.saksham;
 
-public class User {
+abstract public class User {
 
     public void addStudent() {
     }
