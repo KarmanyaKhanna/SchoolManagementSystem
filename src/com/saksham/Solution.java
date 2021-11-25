@@ -25,14 +25,43 @@ public class Solution {
         }
     }
 
+        public static String userType(String username, String password){
+            if (username.equals("Student") && password.equals("Stu@Pilani08")){
+                return "student";
+            }
+            else if (username.equals("Admin") && password.equals("Admin@Insti64")){
+                return "admin";
+            } else if (username.equals("Teacher") && password.equals("Block@213")){
+                return "teacher";
+            }
+            return "Incorrect username or password";
+        }
+
         public static void main(String[] args) {
 
             Scanner in = new Scanner(System.in);
 
-            System.out.println("Enter Teacher ");
-            String str = in.nextLine().toLowerCase(Locale.ROOT);
+            String user;
 
-            User fc = CurrentUser.getInstance(str);
+            checkAuth:
+            do{
+                System.out.println("Enter Username and Password (both are case sensitive)");
+                System.out.println("--------------------------------------------");
+                System.out.println("Enter Username");
+                String username = in.nextLine();
+                System.out.println("Enter Password");
+                String password = in.nextLine();
+
+                user = userType(username,password);
+                if (user.equals("Incorrect username or password")) {
+                    continue checkAuth;
+                } else {
+                    break;
+                }
+            }
+            while (true);
+
+            User fc = CurrentUser.getInstance(user);
 
             System.out.println("Enter no. of commands you want to implement");
 
@@ -40,7 +69,7 @@ public class Solution {
             for(int i = 0; i < noOfCommands; i++) {
 
                 System.out.println("---------------------------------------------------------------------------------------------");
-                printInstructions(str);
+                printInstructions(user);
                 System.out.println("--------------------------");
                 System.out.println("Enter the command code");
                 System.out.println("--------------------------");

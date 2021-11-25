@@ -10,7 +10,7 @@ public class Admin extends User{
 
     private ArrayList<Teacher> teachers = new ArrayList<>();
     private ArrayList<Student> students = new ArrayList<>();
-    private ArrayList<Course> courses;
+    private ArrayList<Course> courses = new ArrayList<>();
 
     public Scanner sc = new Scanner(System.in);
 
@@ -18,7 +18,6 @@ public class Admin extends User{
         this.courses = courses;
         this.students =students;
         this.teachers = teachers;
-        printCourses(courses);
     }
 
     public void addStudent() {
@@ -86,6 +85,7 @@ public class Admin extends User{
         while (id == null){
             id = this.sc.nextLine();
         }
+
         System.out.println("Enter 'name' to change name");
         System.out.println("Enter 'attendance' to change attendance ");
         System.out.println("Enter 'id' to change id ");
@@ -105,36 +105,41 @@ public class Admin extends User{
 
         switch (line2) {
             case "name" -> {
+                System.out.println("Enter new name");
                 String name = this.sc.nextLine();
                 assert student != null;
                 student.setName(name);
             }
             case "attendance" -> {
+                System.out.println("Enter total number of days attended");
                 String attendance = this.sc.nextLine();
                 assert student != null;
                 student.addDaysAttended(Integer.parseInt(attendance));
             }
             case "id" -> {
+                System.out.println("Enter new ID of student");
                 String studentID = this.sc.nextLine();
                 assert student != null;
                 student.setId(Integer.parseInt(studentID));
             }
             case "addcourse" -> {
-//                SOUT LIST OF COURSES WITH CODES HERE and ask user for course id of course to be added
+                printCourses(this.courses);
+                System.out.println("Enter Course ID you want to add");
                 String courseID = this.sc.nextLine();
                 Course courseToBeAdded = this.getCourse(Integer.parseInt(courseID));
                 assert student != null;
                 student.addCourse(courseToBeAdded);
             }
             case "deletecourse" -> {
-                // SOUT LIST OF COURSES WITH CODES HERE and ask user for course id of course to be added
+                printCourses(this.courses);
+                System.out.println("Enter Course ID you want to delete");
                 String courseDeleteID = this.sc.nextLine();
                 Course courseToBeDeleted = this.getCourse(Integer.parseInt(courseDeleteID));
                 assert student != null;
                 student.deleteCourse(courseToBeDeleted);
             }
             case "addmarks" -> {
-                // SOUT LIST OF COURSES WITH CODES HERE and ask user for course id of course jiske marks dene hai student ko
+                printCourses(this.courses);
                 System.out.println("Enter the ID of course whose marks you want to set");
                 String courseMarksID = this.sc.nextLine();
                 System.out.println("Enter the number of marks");
@@ -167,7 +172,6 @@ public class Admin extends User{
 
 
             for (String s : courseCodeArr) {
-
                 Course course = this.getCourse(Integer.parseInt(s));
                 if (course == null) {
                     System.out.println("Incorrect Course code/codes");
