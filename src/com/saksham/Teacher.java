@@ -2,7 +2,7 @@ package com.saksham;
 import java.util.List;
 
 
-public class Teacher {
+public class Teacher implements User{
     int ID;
     String name;
     List<Course> courses;

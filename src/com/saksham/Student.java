@@ -2,7 +2,7 @@ package com.saksham;
 import java.util.List;
 
 
-public class Student {
+public class Student implements User{
     List<Course> courses;
     String name;
     private int id;
@@ -50,10 +50,10 @@ public class Student {
         for (Course c : this.courses) {
             if (c.getCourseID() == courseID) {
                 course.marks = marks;
+                course.calculateGrade();
                 return course.name + " marked " + course.marks + " marks.";
             }
         }
-        course.calculateGrade();
         return "No course found with this ID";
     }
 

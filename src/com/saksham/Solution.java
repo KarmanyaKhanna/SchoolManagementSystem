@@ -2,16 +2,18 @@ package com.saksham;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Solution {
 
         public static void main(String[] args) {
-            ArrayList<Course> initial = new ArrayList<>();
-            initial.add( new Course("OOP", 213));
-            initial.add( new Course("DD", 211));
-            initial.add( new Course("ENG", 249));
-            initial.add( new Course("LICS", 890));
-            Admin fc = new Admin(initial);
+
+            Scanner in = new Scanner(System.in);
+
+            CurrentUser cu = new CurrentUser();
+            String str = in.nextLine();
+            User fc = cu.getInstance(str);
+
             System.out.println("Command 0 will add student");
             System.out.println("Command 1 will delete student");
             System.out.println("Command 2 will update student details");
