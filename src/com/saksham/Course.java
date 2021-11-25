@@ -10,7 +10,6 @@ public class Course {
     public Course(String name, int courseID) {
         this.name = name;
         this.courseID = courseID;
-        this.grade = grade;
     }
 
     public void calculateGrade(){
@@ -39,7 +38,7 @@ public class Course {
         }
     }
 
-    List<Teacher> teachers;
+//    List<Teacher> teachers;
 
     public int getCourseID() {
         return courseID;

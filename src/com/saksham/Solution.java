@@ -6,7 +6,7 @@ import java.util.List;
 public class Solution {
 
         public static void main(String[] args) {
-            ArrayList<Course> initial = new ArrayList<Course>();
+            ArrayList<Course> initial = new ArrayList<>();
             initial.add( new Course("OOP", 213));
             initial.add( new Course("DD", 211));
             initial.add( new Course("ENG", 249));
@@ -15,7 +15,14 @@ public class Solution {
 
             int noOfCommands = Integer.parseInt(fc.sc.nextLine());
             for(int i = 0; i < noOfCommands; i++) {
-                int command = Integer.parseInt(fc.sc.nextLine());
+                System.out.println("Enter the command code");
+                String input = fc.sc.nextLine();
+                if (input == null || input.length() == 0){
+//                    System.out.println("Enter the command code");
+                    input = fc.sc.nextLine();
+                }
+
+                int command = Integer.parseInt(input);
 
                 if (command == 0){
                     fc.addStudent();
