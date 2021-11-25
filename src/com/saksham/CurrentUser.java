@@ -1,6 +1,5 @@
 package com.saksham;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CurrentUser {
@@ -34,6 +33,10 @@ public class CurrentUser {
             }
 
         }
-        return new Staff();
+        return new User() {
+            public int hashCode() {
+                return 0;
+            };
+        };
     }
 }
