@@ -91,6 +91,13 @@ public class Admin {
         Student student = this.getStudent(Integer.parseInt(id));
         line2 = line2.toLowerCase(Locale.ROOT);
 
+        System.out.println("Enter 'name' to change name");
+        System.out.println("Enter 'attendance' to change attendance ");
+        System.out.println("Enter 'id' to change id ");
+        System.out.println("Enter 'addcourse' to add course ");
+        System.out.println("Enter 'deletecourse' to delete course");
+        System.out.println("Enter 'addmarks' to add marks");
+
 //        SOUT ENTER NAME TO CHANGE NAME, ENTER ADDCOURSE TO ADD COURSE TO STUDENT etc
 
         switch (line2) {
@@ -172,7 +179,7 @@ public class Admin {
         Teacher teacher = new Teacher(Integer.parseInt(id), name, teacherCourses);
 
         if(this.teachers.contains(teacher)){
-            System.out.println("Student already in the school");
+            System.out.println("Teacher already in the school");
             return;
         }
 
@@ -200,8 +207,14 @@ public class Admin {
     }
 
     public void modifyTeacher() {
-
+        System.out.println("Enter ID of teacher you want to change");
         String id = this.sc.nextLine();
+        System.out.println("Enter 'name' to change name");
+        System.out.println("Enter 'id' to change id");
+        System.out.println("Enter 'addcourse' to add courses ");
+        System.out.println("Enter 'deletecourse' to delete course ");
+        System.out.println("-----------------------------------------------------------------------------");
+        System.out.println("Enter command you want to perform");
         String line2 = this.sc.nextLine();
         String line3 = this.sc.nextLine();
 
@@ -254,7 +267,7 @@ public class Admin {
     }
 
     private void printTeacher(Teacher teacher){
-        System.out.print("Teacher's Name is " + teacher.name + " with ID:" + teacher.getId() + " and courses are :-");
+        System.out.print("Teacher's Name is " + teacher.name + " with ID:" + teacher.getID() + " and courses are :-");
         printCourses(teacher.courses);
     }
 

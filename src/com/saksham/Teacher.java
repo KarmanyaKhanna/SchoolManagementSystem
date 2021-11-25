@@ -33,7 +33,4 @@ public class Teacher {
         this.name = name;
     }
 
-    public int getId() {
-        return this.ID;
-    }
 }
