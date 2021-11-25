@@ -37,10 +37,10 @@ public class Data {
         studentList.add(new Student(getRandomCourseList(4), "Darshil", 2169, 78));
 
         ///////////// Teachers ////////////
+
         teacherList.add(new Teacher( 2301, "Amit", getRandomCourseList(3)));
         teacherList.add(new Teacher( 1219, "Prateek", getRandomCourseList(3)));
         teacherList.add(new Teacher( 3029, "Ashutosh", getRandomCourseList(3)));
-
 
     }
     public static ArrayList<Course> courseList = new ArrayList<>();
