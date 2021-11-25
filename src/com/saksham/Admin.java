@@ -83,20 +83,23 @@ public class Admin extends User{
     public void modifyStudent() {
         System.out.println("Enter id of student you want to edit");
         String id = this.sc.nextLine();
-        if (id == null){
+        while (id == null){
             id = this.sc.nextLine();
         }
-        System.out.println("Enter the command you want to perform");
-        String line2 = this.sc.nextLine();
-        Student student = this.getStudent(Integer.parseInt(id));
-        line2 = line2.toLowerCase(Locale.ROOT);
-
         System.out.println("Enter 'name' to change name");
         System.out.println("Enter 'attendance' to change attendance ");
         System.out.println("Enter 'id' to change id ");
         System.out.println("Enter 'addcourse' to add course ");
         System.out.println("Enter 'deletecourse' to delete course");
         System.out.println("Enter 'addmarks' to add marks");
+        System.out.println("----------------------------------------");
+        System.out.println("Enter the command you want to perform");
+        System.out.println("----------------------------------------");
+        String line2 = this.sc.nextLine();
+        Student student = this.getStudent(Integer.parseInt(id));
+        line2 = line2.toLowerCase(Locale.ROOT);
+
+
 
 //        SOUT ENTER NAME TO CHANGE NAME, ENTER ADDCOURSE TO ADD COURSE TO STUDENT etc
 
@@ -269,6 +272,12 @@ public class Admin extends User{
     private void printTeacher(Teacher teacher){
         System.out.print("Teacher's Name is " + teacher.name + " with ID:" + teacher.getID() + " and courses are :-");
         printCourses(teacher.courses);
+    }
+
+    public void printAllTeacher(){
+        for (Teacher t: teachers) {
+            printTeacher(t);
+        }
     }
 
     public void printAllStudents(){

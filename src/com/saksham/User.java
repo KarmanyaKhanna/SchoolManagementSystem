@@ -34,4 +34,7 @@ public class User {
 
     public void printMarks() {
     }
+
+    public void printAllTeacher() {
+    }
 }

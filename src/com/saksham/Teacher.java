@@ -11,6 +11,22 @@ public class Teacher extends User{
         return ID;
     }
 
+    @Override
+    public void modifyStudent() {
+        CurrentUser.admin.modifyStudent();
+    }
+
+    @Override
+    public void printAllStudents() {
+        CurrentUser.admin.printAllStudents();
+    }
+
+    @Override
+    public void calculateAttendance() {
+        CurrentUser.setAdmin();
+        CurrentUser.admin.calculateAttendance();
+    }
+
     public Teacher(int ID, String name, List<Course> courses) {
         this.ID = ID;
         this.name = name;
