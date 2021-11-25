@@ -6,16 +6,18 @@ import java.util.Locale;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-public class Admin implements User{
+public class Admin extends User{
 
-    private final ArrayList<Teacher> teachers = new ArrayList<>();
-    private final ArrayList<Student> students = new ArrayList<>();
-    private final ArrayList<Course> courses;
+    private ArrayList<Teacher> teachers = new ArrayList<>();
+    private ArrayList<Student> students = new ArrayList<>();
+    private ArrayList<Course> courses;
 
     public Scanner sc = new Scanner(System.in);
 
     Admin(ArrayList<Course> courses, ArrayList<Student> students,ArrayList<Teacher> teachers){
         this.courses = courses;
+        this.students =students;
+        this.teachers = teachers;
         printCourses(courses);
     }
 

@@ -19,6 +19,7 @@ public class Data {
         Course dd = new Course("DD", 211);
         Course eng =new Course("ENG", 249);
         Course lics = new Course("LiCS",890);
+
         //////////////// Courses Added ///////////////
 
         courseList.add(oop);
@@ -29,7 +30,7 @@ public class Data {
         /////////////// Students ///////////////
 
         studentList.add(new Student(getRandomCourseList(3), "Saksham", 1508, 178));
-        studentList.add(new Student(getRandomCourseList(4), "Karmanya", 0311, 203));
+        studentList.add(new Student(getRandomCourseList(4), "Karmanya", 1201, 203));
         studentList.add(new Student(getRandomCourseList(2), "Aaina", 2301, 267));
         studentList.add(new Student(getRandomCourseList(3), "Chirag", 2039, 102));
         studentList.add(new Student(getRandomCourseList(3), "Harry", 1501, 269));
@@ -37,8 +38,8 @@ public class Data {
 
         ///////////// Teachers ////////////
         teacherList.add(new Teacher( 2301, "Amit", getRandomCourseList(3)));
-        teacherList.add(new Teacher( 2301, "Prateek", getRandomCourseList(3)));
-        teacherList.add(new Teacher( 2301, "Ashutosh", getRandomCourseList(3)));
+        teacherList.add(new Teacher( 1219, "Prateek", getRandomCourseList(3)));
+        teacherList.add(new Teacher( 3029, "Ashutosh", getRandomCourseList(3)));
 
 
     }

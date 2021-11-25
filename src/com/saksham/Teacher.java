@@ -2,12 +2,12 @@ package com.saksham;
 import java.util.List;
 
 
-public class Teacher implements User{
+public class Teacher extends User{
     int ID;
     String name;
     List<Course> courses;
 
-    public int getID() {
+    public void getID() {
         return ID;
     }
 

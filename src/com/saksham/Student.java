@@ -2,7 +2,8 @@ package com.saksham;
 import java.util.List;
 
 
-public class Student implements User{
+public class Student extends User{
+
     List<Course> courses;
     String name;
     private int id;
@@ -31,8 +32,21 @@ public class Student implements User{
         return daysAttended;
     }
 
-    // ADMIN ONLY
+    public void printID(){
+        System.out.println("Your ID is " + getId());
+    }
 
+    public void printAttendance() {
+        System.out.println("You attended " + getDaysAttended() + " days out of 270 days.");
+    }
+
+    public void printMarks() {
+        for (Course c: courses) {
+            System.out.println(c.name + ": " + c.marks + " marks and " + c.grade + " grade.");
+        }
+    }
+
+    // ADMIN ONLY
     public void setName(String name) {
         this.name = name;
     }
