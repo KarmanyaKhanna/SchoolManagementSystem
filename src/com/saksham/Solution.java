@@ -10,9 +10,11 @@ public class Solution {
 
             Scanner in = new Scanner(System.in);
 
-            CurrentUser cu = new CurrentUser();
+//            CurrentUser cu = new CurrentUser();
             String str = in.nextLine();
-            User fc = cu.getInstance(str);
+            User fc = CurrentUser.getInstance(str);
+
+            fc.printAllStudents();
 
             System.out.println("Command 0 will add student");
             System.out.println("Command 1 will delete student");
@@ -25,13 +27,12 @@ public class Solution {
 
             System.out.println("Enter no. of commands you want to implement");
 
-            int noOfCommands = Integer.parseInt(fc.sc.nextLine());
+            int noOfCommands = Integer.parseInt(in.nextLine());
             for(int i = 0; i < noOfCommands; i++) {
                 System.out.println("Enter the command code");
-                String input = fc.sc.nextLine();
+                String input = in.nextLine();
                 if (input == null || input.length() == 0){
-//                    System.out.println("Enter the command code");
-                    input = fc.sc.nextLine();
+                    input = in.nextLine();
                 }
 
                 int command = Integer.parseInt(input);
@@ -60,6 +61,17 @@ public class Solution {
                 if (command == 110){
                     fc.calculateAttendance();
                 }
+                //////////////////// Student Accessible /////////////////////////
+                if (command == 200){
+                    fc.printID();
+                }
+                if (command == 201){
+                    fc.printAttendance();
+                }
+                if (command == 201){
+                    fc.printMarks();
+                }
+                ////////////////// Teacher Accessible ///////////////
             }
         }
 
